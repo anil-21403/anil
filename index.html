@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universe Edite</title>
-    <meta name="description" content="Official website for Universe Edite YouTube channel. Daily new gaming edits, unedit clips, results, and creative content.">
+    <title>Universe Edite - Official Gaming Edits Hub</title>
+    <meta name="description" content="Universe Edite: Daily new gaming edits, unedit clips, results & creative content. 38 subscribers • Joined 2022 • @editoruniverse-12">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background: #000; color: #fff; }
+        body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Roboto', sans-serif; overflow-x: hidden; }
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
         .header-banner {
             position: relative;
             width: 100%;
-            height: 60vh;
-            min-height: 400px;
-            background-image: url('https://yt3.ggpht.com/XihN0zv3fV3W1av8j0oL3Yf0r0rL0Y9vE3p3sI8w5qYkX8Zf0q0Y8w5qYkX8Zf0q0Y=s2120-fcrop64=1,00000000ffffffff');
+            min-height: 80vh;
             background-size: cover;
             background-position: center;
             display: flex;
@@ -20,133 +21,151 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            overflow: hidden;
         }
+        .header-banner::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.9));
+            z-index: 1;
+        }
+        .banner-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+        .content-overlay { position: relative; z-index: 2; animation: fadeIn 2s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
         .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid #fff;
-            box-shadow: 0 0 20px rgba(0,0,0,0.8);
-            margin-bottom: 20px;
+            width: 200px; height: 200px; border-radius: 50%; border: 8px solid #f00; box-shadow: 0 0 40px rgba(255,0,0,0.8);
+            animation: glow 2s infinite alternate;
         }
-        .header-banner h1 {
-            font-size: 56px;
-            margin: 10px 0;
-            text-shadow: 0 0 15px #000;
+        @keyframes glow { from { box-shadow: 0 0 20px rgba(255,0,0,0.5); } to { box-shadow: 0 0 50px rgba(255,0,0,1); } }
+        .header-banner h1 { font-family: 'Orbitron', sans-serif; font-size: 70px; margin: 20px 0; text-shadow: 0 0 20px #f00; }
+        .handle { font-size: 30px; color: #ff6666; }
+        .stats { font-size: 22px; margin: 20px 0; }
+        .buttons a {
+            display: inline-block; background: #f00; color: #fff; padding: 18px 50px; margin: 20px;
+            text-decoration: none; border-radius: 50px; font-size: 26px; transition: all 0.4s;
+            box-shadow: 0 0 20px rgba(255,0,0,0.6);
         }
-        .handle {
-            font-size: 24px;
-            color: #ccc;
-            margin-bottom: 10px;
+        .buttons a:hover { background: #ff3333; transform: scale(1.1); box-shadow: 0 0 40px rgba(255,0,0,1); }
+        .container { max-width: 1280px; margin: 0 auto; padding: 60px 20px; }
+        section { margin-bottom: 80px; animation: fadeIn 1.5s ease-in; }
+        h2 { font-family: 'Orbitron', sans-serif; text-align: center; font-size: 44px; margin-bottom: 40px; text-shadow: 0 0 10px #f00; }
+        .about, .stats-section, .community { background: rgba(17,17,17,0.8); padding: 50px; border-radius: 20px; box-shadow: 0 0 30px rgba(255,0,0,0.4); text-align: center; }
+        .about p, .community p { font-size: 20px; line-height: 1.8; }
+        table { width: 100%; border-collapse: collapse; margin: 30px 0; }
+        th, td { padding: 15px; border: 1px solid #f00; text-align: left; }
+        th { background: #f00; }
+        .videos { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 40px; }
+        .video-card {
+            background: #111; border-radius: 20px; overflow: hidden; box-shadow: 0 0 25px rgba(255,0,0,0.3);
+            transition: transform 0.4s;
         }
-        .visit-btn, .subscribe-btn {
-            display: inline-block;
-            background: #f00;
-            color: #fff;
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 8px;
-            font-size: 24px;
-            margin: 15px;
-            transition: background 0.3s;
+        .video-card:hover { transform: translateY(-10px); }
+        iframe { width: 100%; height: 315px; }
+        .video-title { padding: 20px; font-size: 18px; background: #222; }
+        footer { text-align: center; padding: 50px; background: #0a0a0a; font-size: 16px; }
+        a { color: #f00; }
+        @media (max-width: 768px) {
+            .header-banner h1 { font-size: 50px; }
+            .logo { width: 150px; height: 150px; }
+            .buttons a { padding: 14px 30px; font-size: 22px; display: block; margin: 15px auto; }
         }
-        .visit-btn:hover, .subscribe-btn:hover {
-            background: #ff3333;
-        }
-        .container { max-width: 1200px; margin: 0 auto; padding: 50px 20px; }
-        .about {
-            background: #111;
-            padding: 50px;
-            border-radius: 15px;
-            margin-bottom: 50px;
-            text-align: center;
-            box-shadow: 0 0 20px rgba(255,0,0,0.2);
-        }
-        .about h2 { font-size: 36px; margin-bottom: 20px; }
-        .videos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        iframe {
-            width: 100%;
-            height: 315px;
-            border: none;
-            border-radius: 15px;
-            box-shadow: 0 0 20px rgba(255,0,0,0.4);
-        }
-        .video-title {
-            text-align: center;
-            margin-top: 10px;
-            font-size: 18px;
-        }
-        footer {
-            text-align: center;
-            padding: 40px;
-            background: #0a0a0a;
-            font-size: 14px;
-        }
-        a { color: #f00; text-decoration: none; }
-        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
 
+    <div id="particles-js"></div>
+
     <div class="header-banner">
-        <img src="https://yt3.googleusercontent.com/dC7rpoylkviXlIyXjqhyOodxaeeHEWCDO7mPl4gI1SXcWiy_J7VjMk6I4dABIMf_vA6gQya_Sw=s160-c-k-c0x00ffffff-no-rj" alt="Universe Edite Logo" class="logo">
-        <h1>Universe Edite</h1>
-        <p class="handle">@editoruniverse-12</p>
-        <p style="font-size: 28px; text-shadow: 0 0 10px #000;">Daily new video...</p>
-        <div>
-            <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ" class="visit-btn" target="_blank">Visit YouTube Channel</a>
-            <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ?sub_confirmation=1" class="subscribe-btn" target="_blank">Subscribe</a>
+        <img src="https://yt3.ggpht.com/XihN0zv3fV3W1av8j0oL3Yf0r0rL0Y9vE3p3sI8w5qYkX8Zf0q0Y8w5qYkX8Zf0q0Y=w2120-fcrop64=1,00000000ffffffff-k-c0x00ffffff-no-nd-rj" alt="Channel Banner" class="banner-img">
+        <div class="content-overlay">
+            <img src="https://yt3.googleusercontent.com/dC7rpoylkviXlIyXjqhyOodxaeeHEWCDO7mPl4gI1SXcWiy_J7VjMk6I4dABIMf_vA6gQya_Sw=s800-c-k-c0x00ffffff-no-rj" alt="Universe Edite Logo" class="logo">
+            <h1>Universe Edite</h1>
+            <p class="handle">@editoruniverse-12</p>
+            <p class="stats">38 Subscribers • 4 Total Views • Daily New Videos</p>
+            <div class="buttons">
+                <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ" target="_blank">Visit Channel</a>
+                <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ?sub_confirmation=1" target="_blank">Subscribe Now</a>
+            </div>
         </div>
     </div>
 
     <div class="container">
-        <div class="about">
+
+        <section class="about">
             <h2>About Universe Edite</h2>
-            <p>daily new video • he/him/his<br>
-            Fresh gaming edits, unedit clips for you to edit and mention, result announcements, and creative content every day!</p>
-            <p>Direct Channel Link: <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ" target="_blank">youtube.com/@editoruniverse-12</a></p>
-        </div>
+            <p>daily new video...<br><br>
+            Welcome to the ultimate hub for gaming edits, unedit clips (grab them, edit, and mention me!), result announcements, epic highlights, and daily creative content.<br>
+            Joined March 3, 2022 • Building the universe one edit at a time! #gaming #graphicdesigner</p>
+        </section>
 
-        <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">Latest Videos</h2>
-        <div class="videos">
-            <div>
-                <iframe src="https://www.youtube.com/embed/q7MjVJvV0tY" title="guyz here is the result Part 1" allowfullscreen></iframe>
-                <p class="video-title">guyz here is the result Part 1 | Part 2 announced tomorrow ᵀᴹᴳ</p>
-            </div>
-            <div>
-                <iframe src="https://www.youtube.com/embed/jWDotz4b92o" title="New unedit clip" allowfullscreen></iframe>
-                <p class="video-title">New unedit clip | EDIT this and mention me</p>
-            </div>
-            <div>
-                <iframe src="https://www.youtube.com/embed/JMNRfLnLbew" title="Result announce guyz" allowfullscreen></iframe>
-                <p class="video-title">Result announce guyz | and or unedit ayenge</p>
-            </div>
-            <div>
-                <iframe src="https://www.youtube.com/embed/0_AED3ULMYE" title="Here is part 2" allowfullscreen></iframe>
-                <p class="video-title">Here is part 2 | Friends or unedit lao ya nai</p>
-            </div>
-            <div>
-                <iframe src="https://www.youtube.com/embed/D8JNBEhatJc" title="ENJOY new unedit clip" allowfullscreen></iframe>
-                <p class="video-title">ENJOY new unedit clip | Result after 3 days</p>
-            </div>
-            <div>
-                <iframe src="https://www.youtube.com/embed/_FQ8JCvZT7U" title="Guyz Here is unedit clip" allowfullscreen></iframe>
-                <p class="video-title">Guyz Here is unedit clip | Result after 3 days</p>
-            </div>
-        </div>
+        <section class="stats-section">
+            <h2>Channel Progress & Analysis</h2>
+            <p><strong>Current Stats (as of December 2025):</strong> 38 subscribers • 6 videos • 4 total views</p>
+            <p>Growth Insight: New channel with huge potential! Daily uploads are building momentum – keep sharing edits to grow the community faster.</p>
+            <h3>Recent Video Performance</h3>
+            <table>
+                <tr><th>Video Title</th><th>Upload Date</th><th>Views</th></tr>
+                <tr><td>ENJOY new unedit clip | Result after 3 days</td><td>~1 day ago</td><td>0 views</td></tr>
+                <tr><td>Result announce guyz | and or unedit ayenge</td><td>~2 days ago</td><td>1 view</td></tr>
+                <tr><td>Guyz Here is unedit clip | Result after 3 days</td><td>~5 days ago</td><td>0 views</td></tr>
+                <tr><td>Here is part 2 | Friends or unedit lao ya nai</td><td>~6 days ago</td><td>1 view</td></tr>
+                <tr><td>guyz here is the result Part 1</td><td>~7 days ago</td><td>1 view</td></tr>
+                <tr><td>New unedit clip | EDIT this and mention me</td><td>~8 days ago</td><td>1 view</td></tr>
+            </table>
+            <p>Motivation: Consistency is key! With daily posts, expect exponential growth soon.</p>
+        </section>
 
-        <p style="text-align: center; margin-top: 60px; font-size: 22px;">
-            <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ/videos" target="_blank">Watch All Videos on YouTube →</a>
-        </p>
+        <section>
+            <h2>Latest Videos</h2>
+            <div class="videos">
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/D8JNBEhatJc" allowfullscreen></iframe>
+                    <div class="video-title">ENJOY new unedit clip | Result after 3 days</div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/JMNRfLnLbew" allowfullscreen></iframe>
+                    <div class="video-title">Result announce guyz | and or unedit ayenge</div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/_FQ8JCvZT7U" allowfullscreen></iframe>
+                    <div class="video-title">Guyz Here is unedit clip | Result after 3 days</div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/0_AED3ULMYE" allowfullscreen></iframe>
+                    <div class="video-title">Here is part 2 | Friends or unedit lao ya nai</div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/q7MjVJvV0tY" allowfullscreen></iframe>
+                    <div class="video-title">guyz here is the result Part 1</div>
+                </div>
+                <div class="video-card">
+                    <iframe src="https://www.youtube.com/embed/jWDotz4b92o" allowfullscreen></iframe>
+                    <div class="video-title">New unedit clip | EDIT this and mention me</div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 60px; font-size: 24px;">
+                <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ/videos" target="_blank">Watch All on YouTube →</a>
+            </p>
+        </section>
+
+        <section class="community">
+            <h2>Join the Universe!</h2>
+            <p>Edit my unedit clips, mention @editoruniverse-12, and get featured in results! Let's grow together with daily gaming magic.</p>
+        </section>
+
     </div>
 
     <footer>
-        &copy; 2025 Universe Edite | All rights reserved | <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ" target="_blank">YouTube Channel</a>
+        © 2025 Universe Edite | All rights reserved<br>
+        <a href="https://www.youtube.com/channel/UCwTcbDAWuOTuEYisIc9cMIQ" target="_blank">YouTube Channel</a>
     </footer>
+
+    <script>
+        particlesJS("particles-js", {
+            particles: { number: { value: 80 }, color: { value: "#ff0000" }, shape: { type: "circle" }, opacity: { value: 0.5, random: true }, size: { value: 3 }, line_linked: { enable: true, distance: 150, color: "#ff0000", opacity: 0.4, width: 1 }, move: { enable: true, speed: 2 } },
+            interactivity: { detect_on: "canvas", events: { onhover: { enable: true, mode: "repulse" } } },
+            retina_detect: true
+        });
+    </script>
 
 </body>
 </html>
